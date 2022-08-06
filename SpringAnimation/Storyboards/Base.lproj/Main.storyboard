@@ -23,10 +23,10 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Start the animation"/>
                                 <connections>
-                                    <action selector="startTheAnimation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="R1O-M7-pS0"/>
+                                    <action selector="startTheAnimation" destination="BYZ-38-t0r" eventType="touchUpInside" id="VCc-xr-ocq"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FSC-Pi-1vD">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FSC-Pi-1vD" customClass="SpringView" customModule="SpringAnimation">
                                 <rect key="frame" x="30" y="50" width="260" height="160"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NAR-bv-pMR">
@@ -63,7 +63,7 @@ Delay: </string>
                     </view>
                     <connections>
                         <outlet property="actionButton" destination="YPe-64-PLX" id="gTU-oQ-vUF"/>
-                        <outlet property="animationView" destination="FSC-Pi-1vD" id="3qc-Zt-ZBj"/>
+                        <outlet property="animationSpringView" destination="FSC-Pi-1vD" id="3qc-Zt-ZBj"/>
                         <outlet property="parametersTextView" destination="NAR-bv-pMR" id="ZxL-mx-FbT"/>
                     </connections>
                 </viewController>

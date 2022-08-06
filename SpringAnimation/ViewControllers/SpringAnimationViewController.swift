@@ -10,25 +10,43 @@ import SpringAnimation
 
 class SpringAnimationViewController: UIViewController {
     
-    @IBOutlet weak var animationView: UIView!
+    @IBOutlet weak var animationSpringView: SpringView!
     @IBOutlet weak var parametersTextView: UITextView!
     @IBOutlet weak var actionButton: UIButton!
     
     let animations = AnimationPreset.allCases
     let animationCurves = AnimationCurve.allCases
     
+    lazy var nextAnimation = getNextAnimation()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        animationView.layer.cornerRadius = 10
+        animationSpringView.layer.cornerRadius = 10
         actionButton.layer.cornerRadius = 5
         
-        let nextAnimation = getNextAnimation()
-        setupParametersText(with: nextAnimation)
+        animationSpringView.isHidden = true
+        
+        nextAnimation = getNextAnimation()
         setupButton(with: "Run")
     }
     
-    @IBAction func startTheAnimation(_ sender: Any) {
+    @IBAction func startTheAnimation() {
+        if animationSpringView.isHidden {
+            animationSpringView.isHidden.toggle()
+        }
+        
+        setupParametersText(with: nextAnimation)
+        
+        animationSpringView.animation = nextAnimation.preset.rawValue
+        animationSpringView.curve = nextAnimation.curve.rawValue
+        animationSpringView.force = nextAnimation.force
+        animationSpringView.duration = nextAnimation.duration
+        animationSpringView.delay = nextAnimation.delay
+        animationSpringView.animate()
+        
+        nextAnimation = getNextAnimation()
+        setupButton(with: getTextForButton(from: nextAnimation))
     }
     
     //MARK: Private methods
@@ -36,9 +54,9 @@ class SpringAnimationViewController: UIViewController {
         NextAnimation(
             preset: animations.randomElement() ?? .pop,
             curve: animationCurves.randomElement() ?? .easeIn,
-            force: Float.random(in: 0...2),
-            duration: Float.random(in: 0...1.2),
-            delay: Float.random(in: 0...1.2)
+            force: CGFloat.random(in: 0...2),
+            duration: CGFloat.random(in: 0...1.2),
+            delay: CGFloat.random(in: 0...1.2)
         )
     }
     
@@ -54,6 +72,10 @@ Curve: \(nextAnimation.curve.rawValue)
 \(String(format: "Duration: %.2f", nextAnimation.duration))
 \(String(format: "Delay: %.2f", nextAnimation.delay))
 """
+    }
+    
+    private func getTextForButton(from nextAnimation: NextAnimation) -> String {
+        "Run \(nextAnimation.preset.rawValue)"
     }
     
 }

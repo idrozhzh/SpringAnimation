@@ -6,12 +6,13 @@
 //
 
 import Foundation
+import UIKit
 import SpringAnimation
 
 struct NextAnimation {
     let preset: AnimationPreset
     let curve: AnimationCurve
-    let force: Float
-    let duration: Float
-    let delay: Float
+    let force: CGFloat
+    let duration: CGFloat
+    let delay: CGFloat
 }
