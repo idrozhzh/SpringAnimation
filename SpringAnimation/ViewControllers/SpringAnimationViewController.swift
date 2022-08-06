@@ -9,11 +9,18 @@ import UIKit
 
 class SpringAnimationViewController: UIViewController {
 
+    @IBOutlet weak var animationView: UIView!
+    @IBOutlet weak var parametersTextView: UITextView!
+    @IBOutlet weak var actionButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        
     }
 
-
+    @IBAction func startTheAnimation(_ sender: Any) {
+    }
+    
 }
 

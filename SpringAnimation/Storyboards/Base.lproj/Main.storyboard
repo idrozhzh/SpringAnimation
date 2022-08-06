@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,15 +13,63 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="SpringAnimationViewController" customModule="SpringAnimation" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPe-64-PLX">
+                                <rect key="frame" x="86.5" y="467" width="147" height="31"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Start the animation"/>
+                                <connections>
+                                    <action selector="startTheAnimation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="R1O-M7-pS0"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FSC-Pi-1vD">
+                                <rect key="frame" x="30" y="50" width="260" height="160"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NAR-bv-pMR">
+                                        <rect key="frame" x="10" y="20" width="240" height="120"/>
+                                        <string key="text">Preset: 
+Curve: 
+Force: 
+Duration: 
+Delay: </string>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="IGO-qq-A3x"/>
+                                    <constraint firstAttribute="width" constant="260" id="RlP-Lk-0OH"/>
+                                    <constraint firstAttribute="trailing" secondItem="NAR-bv-pMR" secondAttribute="trailing" constant="10" id="VMT-03-thk"/>
+                                    <constraint firstItem="NAR-bv-pMR" firstAttribute="leading" secondItem="FSC-Pi-1vD" secondAttribute="leading" constant="10" id="YqX-Vx-KJC"/>
+                                    <constraint firstItem="NAR-bv-pMR" firstAttribute="top" secondItem="FSC-Pi-1vD" secondAttribute="top" constant="20" id="jO4-ax-qxd"/>
+                                    <constraint firstAttribute="bottom" secondItem="NAR-bv-pMR" secondAttribute="bottom" constant="20" id="qHu-Ld-gTF"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="YPe-64-PLX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Eq9-os-ghi"/>
+                            <constraint firstItem="FSC-Pi-1vD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LS2-Bh-tGP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="YPe-64-PLX" secondAttribute="bottom" constant="70" id="Pon-Zn-Yw2"/>
+                            <constraint firstItem="FSC-Pi-1vD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="dMW-Rc-qiV"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="actionButton" destination="YPe-64-PLX" id="gTU-oQ-vUF"/>
+                        <outlet property="animationView" destination="FSC-Pi-1vD" id="3qc-Zt-ZBj"/>
+                        <outlet property="parametersTextView" destination="NAR-bv-pMR" id="ZxL-mx-FbT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="20" y="94"/>
+            <point key="canvasLocation" x="18.75" y="92.957746478873247"/>
         </scene>
     </scenes>
     <resources>
