@@ -16,6 +16,8 @@ class SpringAnimationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        animationView.layer.cornerRadius = 10
+        actionButton.layer.cornerRadius = 5
         
     }
 
