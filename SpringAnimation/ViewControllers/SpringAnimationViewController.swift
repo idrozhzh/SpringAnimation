@@ -37,13 +37,7 @@ class SpringAnimationViewController: UIViewController {
         }
         
         setupParametersText(with: nextAnimation)
-        
-        animationSpringView.animation = nextAnimation.preset.rawValue
-        animationSpringView.curve = nextAnimation.curve.rawValue
-        animationSpringView.force = nextAnimation.force
-        animationSpringView.duration = nextAnimation.duration
-        animationSpringView.delay = nextAnimation.delay
-        animationSpringView.animate()
+        startSpringAnimation(with: nextAnimation)
         
         nextAnimation = getNextAnimation()
         setupButton(with: getTextForButton(from: nextAnimation))
@@ -78,5 +72,13 @@ Curve: \(nextAnimation.curve.rawValue)
         "Run \(nextAnimation.preset.rawValue)"
     }
     
+    private func startSpringAnimation(with parameters: NextAnimation) {
+        animationSpringView.animation = parameters.preset.rawValue
+        animationSpringView.curve = parameters.curve.rawValue
+        animationSpringView.force = parameters.force
+        animationSpringView.duration = parameters.duration
+        animationSpringView.delay = parameters.delay
+        animationSpringView.animate()
+    }
 }
 
