@@ -40,17 +40,17 @@ class SpringAnimationViewController: UIViewController {
         startSpringAnimation(with: nextAnimation)
         
         nextAnimation = getNextAnimation()
-        setupButton(with: getTextForButton(from: nextAnimation))
+        setupButton(with: nextAnimation.preset)
     }
     
     //MARK: Private methods
     private func getNextAnimation() -> NextAnimation {
         NextAnimation(
-            preset: animations.randomElement() ?? .pop,
-            curve: animationCurves.randomElement() ?? .easeIn,
-            force: CGFloat.random(in: 0.7...2),
-            duration: CGFloat.random(in: 0.5...1.2),
-            delay: CGFloat.random(in: 0.5...1.2)
+            preset: animations.randomElement()?.rawValue ?? "pop",
+            curve: animationCurves.randomElement()?.rawValue ?? "easeIn",
+            force: Float.random(in: 0.7...2),
+            duration: Float.random(in: 0.5...1.2),
+            delay: Float.random(in: 0.5...1.2)
         )
     }
     
@@ -60,24 +60,20 @@ class SpringAnimationViewController: UIViewController {
     
     private func setupParametersText(with nextAnimation: NextAnimation) {
         parametersTextView.text = """
-Preset: \(nextAnimation.preset.rawValue)
-Curve: \(nextAnimation.curve.rawValue)
+Preset: \(nextAnimation.preset)
+Curve: \(nextAnimation.curve)
 \(String(format: "Force: %.2f", nextAnimation.force))
 \(String(format: "Duration: %.2f", nextAnimation.duration))
 \(String(format: "Delay: %.2f", nextAnimation.delay))
 """
     }
     
-    private func getTextForButton(from nextAnimation: NextAnimation) -> String {
-        "Run \(nextAnimation.preset.rawValue)"
-    }
-    
     private func startSpringAnimation(with parameters: NextAnimation) {
-        animationSpringView.animation = parameters.preset.rawValue
-        animationSpringView.curve = parameters.curve.rawValue
-        animationSpringView.force = parameters.force
-        animationSpringView.duration = parameters.duration
-        animationSpringView.delay = parameters.delay
+        animationSpringView.animation = parameters.preset
+        animationSpringView.curve = parameters.curve
+        animationSpringView.force = CGFloat(parameters.force)
+        animationSpringView.duration = CGFloat(parameters.duration)
+        animationSpringView.delay = CGFloat(parameters.delay)
         animationSpringView.animate()
     }
 }
