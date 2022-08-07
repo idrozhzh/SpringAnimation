@@ -48,9 +48,9 @@ class SpringAnimationViewController: UIViewController {
         NextAnimation(
             preset: animations.randomElement() ?? .pop,
             curve: animationCurves.randomElement() ?? .easeIn,
-            force: CGFloat.random(in: 0...2),
-            duration: CGFloat.random(in: 0...1.2),
-            delay: CGFloat.random(in: 0...1.2)
+            force: CGFloat.random(in: 0.7...2),
+            duration: CGFloat.random(in: 0.5...1.2),
+            delay: CGFloat.random(in: 0.5...1.2)
         )
     }
     
